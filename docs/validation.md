@@ -35,4 +35,6 @@ Recorded on 2026-11-12. These results describe this build, not a guarantee of de
 
 ## Reproduction
 
+Native Windows installation checked again on 2026-11-15: installed launcher/core, screen rendering, experimental notice and GitHub link. Real loopback capture recorded 40 test packets; replay matched packet and byte totals. PCAP/PCAPNG import and error regression checks passed against the installed executable. Isolated settings and synthetic local traffic only; firewall and login-startup state were unchanged.
+
 See tests/ for regression scripts and packaging/ for reproducible build scripts. Capture tests require libpcap/Npcap and suitable capture permissions. Run firewall integration only in the guarded isolated namespace script or on a deliberately prepared test machine. Inspect README.md for commands, platform requirements and operational limits.

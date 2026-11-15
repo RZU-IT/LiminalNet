@@ -2,7 +2,7 @@
 
 Interactive terminal network monitor for Windows and Linux. Developed by RZU Informatique with OpenAI Codex assistance. Highly inspired by Sniffnet, created by Giuliano Bellini and contributors.
 
-**Development build.** Platform limits and test results: [validation report](docs/validation.md).
+**Experimental.** Development build; not ready for production use. Platform limits and test results: [validation report](docs/validation.md).
 
 ![LiminalNet door symbol](assets/liminalnet-symbol.svg)
 
