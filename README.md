@@ -1,65 +1,62 @@
+<img src="assets/liminalnet-symbol.svg" width="56" alt="LiminalNet door symbol">
+
 # LiminalNet
 
-Interactive terminal network monitor for Windows and Linux. Developed by RZU Informatique with OpenAI Codex assistance. Highly inspired by Sniffnet, created by Giuliano Bellini and contributors.
+Network traffic monitor for the terminal. Windows and Linux, built with Rust and Ratatui.
 
-**Experimental.** Development build; not ready for production use. Platform limits and test results: [validation report](docs/validation.md).
+**Experimental.** Platform support and completed checks are documented in the [validation report](docs/validation.md).
 
-![LiminalNet door symbol](assets/liminalnet-symbol.svg)
+## Features
 
-LiminalNet shows live incoming and outgoing traffic, connections, hosts, inferred services and attributed programs. It includes BPF filters, favorites, PCAP/PCAPNG import, PCAP recording, alert history and configurable terminal colors. The interface supports French and English.
+- Incoming and outgoing traffic, rates and packet counts.
+- Hosts, country/ASN data, inferred services and process attribution.
+- Connection inspection, BPF filters, sorting and favorites.
+- PCAP/PCAPNG import, PCAP recording and session alerts.
+- Themes, custom colors, French and English interface.
 
-## Build from source
+Process attribution is best effort. Service names come from port assignments; they do not identify application protocols with certainty.
 
-This repository contains the source code. Compiled archives are not part of the Git history.
+## Build and run
 
-On Ubuntu 24.04, install Rust, a C compiler, pkg-config and libpcap development files. Then run:
+On Ubuntu 24.04, install Rust, a C compiler, pkg-config and libpcap development files. From the repository root:
 
 ```sh
 cargo build --release --locked
 ./target/release/liminalnet
 ```
 
-Cargo uses the toolchain specified in `rust-toolchain.toml`. Live capture needs suitable permissions. Windows builds also need a C linker and the Npcap SDK; see `packaging/build-windows-from-wsl.sh` for the cross-compilation setup. Npcap itself must be installed separately to run the Windows application.
+The toolchain is pinned in [rust-toolchain.toml](rust-toolchain.toml). No Rust installation is needed to run a compiled package; keep the launcher and `liminalnet-core` together.
 
-## Launch
+| Platform | Capture dependency | Validation |
+| --- | --- | --- |
+| Windows x86-64 | Npcap, installed separately | Native capture and installation tested. Elevated firewall checks remain. |
+| Ubuntu 24.04 x86-64 | libpcap | Capture tested under WSL2. Native Linux acceptance remains. |
 
-Extract the complete platform archive. Launch `liminalnet.exe` on Windows, or `./liminalnet` on Linux. Keep the launcher and `liminalnet-core` together. The launcher checks Npcap on Windows and passes arguments to the engine. No Rust installation is required to use a packaged build.
+Windows builds also need a C linker and the Npcap SDK. The [cross-build script](packaging/build-windows-from-wsl.sh) documents the GNU target setup. Windows binaries are unsigned; Npcap is not bundled.
 
-Windows requires Npcap, installed separately from its official website. Linux requires libpcap (Ubuntu package `libpcap0.8t64`). Capture permissions and firewall permissions are separate. Linux capture can be granted the capabilities printed by the optional installer; changing firewall rules still requires administrative privileges.
+Capture and firewall operations require suitable permissions. Linux application blocking needs a dedicated cgroup v2 scope and kernel support that is unavailable in the tested WSL environment.
 
-The Linux build targets Ubuntu 24.04 x86_64 and compatible systems. WSL testing is not native desktop-Linux validation. Windows binaries are unsigned development builds.
+## Usage and development
 
-## Controls
+[Usage](docs/usage.md) covers keyboard controls, recording and firewall behavior. [Architecture](docs/architecture.md) describes the modules. [Validation](docs/validation.md) records passed checks and remaining work.
 
-- Sources: arrows select; Enter starts; `f` edits BPF; `i` selects a capture file; `e` sets a new PCAP recording path; `r` refreshes adapters. Empty file/export inputs disable that option.
-- Session: `1` overview, `2` inspect, `3` notifications, `4` firewall; Space pauses/resumes; `u` changes units; `m` toggles compact mode.
-- Overview: Tab selects a panel; arrows select entries; `*` changes a favorite; `f` filters favorites; `t` changes sort; `g` groups hosts by IP/country/ASN/domain; Enter inspects the selected item.
-- Inspect: `/` searches IPs, ports, protocols, services, programs and resolved host metadata. Prefix `=` matches a whole field, `!` excludes a substring and `!=` excludes a whole-field match. Enter shows details. `b` proposes blocking the remote IP; `B` proposes blocking the identified executable.
-- Firewall: arrows select a recorded rule; `d` proposes removing it. Operations require explicit confirmation. Recorded rules are not a continuous guarantee of OS policy state.
-- `s` opens settings, `a` opens About, `?` opens help, Escape returns or requests session termination. Enter cancels the termination dialog; `y` confirms it. `q` quits from sources.
+```sh
+cargo test --locked
+cargo clippy --all-targets -- -D warnings
+```
 
-Capture-file direction uses addresses of the selected reference adapter. If those addresses do not match the original capturing machine, direction totals are not meaningful. Process attribution is live-only, best effort, and explicitly unknown when not identified. Port-based service inference does not prove a protocol or malware identity.
+Live capture tests are ignored unless explicitly enabled with capture permissions. Integration scripts are in [tests/](tests/); packaging scripts are in [packaging/](packaging/).
 
-## Firewall behavior
-
-Windows rules target remote IP/CIDR ranges or executable paths in both directions and remain in the system until removed. Linux IP rules use dedicated nftables tables in both directions and do not persist across reboot. Linux executable rules require a running process in a dedicated cgroup v2 scope; shared cgroups are rejected. These rules apply to that scope's outbound traffic and must be reapplied after the application restarts. Kernel support and permissions are checked by nftables before applying a transaction.
-
-Run in an elevated terminal when deliberately changing firewall rules. No automatic privilege escalation is implemented. Only LiminalNet-owned rule identifiers are accepted for removal. Do not assume imported blacklists block anything: they only drive surveillance alerts unless a separate real rule is installed.
-
-## Diagnostics and development
-
-`--help`, `--version`, `--list-interfaces`, `--config-path`, `--diagnose`, `--reset-settings`, `--read`, `--filter`, `--record`, `--interface`, and `--capture-seconds` are available. Reset preserves a backup of an existing configuration. Capture recordings are opt-in and existing output files are refused. Logs rotate locally and are never uploaded automatically.
-
-Build: install the pinned Rust toolchain, C linker and pcap development files, then `cargo build --release --locked`. For Windows cross-compilation, set `PCAP_LIBDIR` to the Npcap SDK x64 libraries and configure the GNU Windows linker. Do not redistribute the Npcap driver without appropriate permission.
-
-Run `cargo test` and `cargo clippy --all-targets -- -D warnings`. Live capture tests are explicitly ignored unless invoked with suitable privileges. `tests/capture_regression.py`, `tests/terminal_smoke.py`, and `tests/firewall_namespace.py` cover additional integration cases; the firewall script refuses the host network namespace.
+Recordings are opt-in. Existing output files are not overwritten. Diagnostics stay local. Alert webhooks are opt-in.
 
 ## Credits and license
 
 Développé par RZU Informatique.
+
 Conçu, testé et débogué par RZU Informatique avec l'assistance d'OpenAI Codex **(not vibe coded)**.
-Highly inspired by Sniffnet, created by Giuliano Bellini and contributors.
 
-The original code uses the draft LiminalNet Community License. It permits free use, modification and attributed redistribution, with restrictions on paid distribution. It is not an OSI-approved open-source license. Third-party components retain their own licenses. DB-IP Lite country/ASN data are CC BY 4.0; port mappings come from IANA. See `LICENSES/`.
+Highly inspired by [Sniffnet](https://github.com/GyulyVGC/sniffnet), created by Giuliano Bellini and contributors.
 
-The Git button opens the project repository when configured. No donation button or RZU website URL is included.
+The [LiminalNet Community License](LICENSE) is a source-available development draft. Free use and attributed redistribution are permitted, with restrictions on paid distribution. It is not an OSI-approved open-source license.
+
+Third-party components retain their own licenses. DB-IP Lite country/ASN data are CC BY 4.0; service mappings come from IANA. Attribution and dependency notices are in [LICENSES/](LICENSES/).
