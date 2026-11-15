@@ -1,6 +1,14 @@
-# Validation — 0.1.0 development build
+# Validation — 0.1.0-beta.1
 
 Recorded on 2026-11-12. These results describe this build, not a guarantee of defect-free operation.
+
+## Beta 1 — 2026-11-15
+
+- Locked Windows/Linux release builds, formatting and Clippy passed. Nine Linux tests passed; the privileged live-capture unit test was skipped in that invocation.
+- Fresh Windows ZIP extraction and isolated installation passed. An extracted Ubuntu Debian package also passed a real loopback capture under WSL2. Each captured 40 synthetic local packets; PCAP recording and replay matched packet and byte totals.
+- PCAP/PCAPNG fixtures and failure regression checks passed against the extracted Windows and Linux packages. The Linux archive installer was exercised with isolated user-data and executable directories.
+- Windows version metadata reports `0.1.0-beta.1` and the prerelease flag. Package dependencies were inspected. Release binaries were rebuilt with source-path remapping; no private home-directory paths, GitHub token patterns or private-key headers were found by the targeted binary scan.
+- OS firewall/native Linux validation limits below remain unchanged. Test captures and isolated settings are not included in release assets.
 
 ## Environments
 

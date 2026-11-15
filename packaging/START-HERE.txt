@@ -1,0 +1,24 @@
+LiminalNet — experimental beta
+
+Windows
+Extract the complete archive and launch liminalnet.exe.
+Keep liminalnet.exe and liminalnet-core.exe together.
+Npcap must be installed separately: https://npcap.com/
+The Windows executables are unsigned.
+
+Linux
+This build targets Ubuntu 24.04 x86-64 and requires libpcap0.8t64.
+Extract the archive and run ./liminalnet, or install the matching Debian package.
+The optional install.sh installs the archive for the current user.
+Live capture requires suitable capture permissions. The installer prints the
+optional capability command; it does not grant permissions automatically.
+
+Firewall changes require administrative privileges. Windows firewall integration
+and native Linux application blocking still require further validation.
+WSL2 testing does not establish full native Linux compatibility.
+
+Controls and test results: usage.md and validation.md.
+License and attribution: LICENSE, DATA-SOURCES.txt and THIRD-PARTY-NOTICES.txt.
+Please credit RZU Informatique when reusing or adapting this project.
+
+Project and bug reports: https://github.com/RZU-IT/LiminalNet

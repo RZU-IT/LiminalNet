@@ -5,7 +5,7 @@ prefix="${XDG_DATA_HOME:-$HOME/.local/share}/liminalnet"
 bin_dir="${LIMINALNET_BIN_DIR:-$HOME/.local/bin}"
 mkdir -p "$prefix" "$bin_dir"
 cp liminalnet liminalnet-core "$prefix/"
-for document in LICENSE DATA-SOURCES.txt THIRD-PARTY-NOTICES.txt usage.md validation.md; do
+for document in LICENSE DATA-SOURCES.txt THIRD-PARTY-NOTICES.txt START-HERE.txt usage.md validation.md; do
     if [ -f "$document" ]; then
         cp "$document" "$prefix/"
         chmod 644 "$prefix/$document"

@@ -6,6 +6,8 @@ Network traffic monitor for the terminal. Windows and Linux, built with Rust and
 
 **Experimental.** Platform support and completed checks are documented in the [validation report](docs/validation.md).
 
+[Download Beta 1](https://github.com/RZU-IT/LiminalNet/releases/tag/v0.1.0-beta.1). Windows x86-64 and Ubuntu 24.04 x86-64 packages are available in the release assets.
+
 ## Features
 
 - Incoming and outgoing traffic, rates and packet counts.
