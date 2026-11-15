@@ -59,4 +59,10 @@ Highly inspired by [Sniffnet](https://github.com/GyulyVGC/sniffnet), created by 
 
 The [LiminalNet Community License](LICENSE) is a source-available development draft. Free use and attributed redistribution are permitted, with restrictions on paid distribution. It is not an OSI-approved open-source license.
 
+## Reuse and attribution
+
+If you reuse or adapt LiminalNet, please credit **RZU Informatique** and link to [the original project](https://github.com/RZU-IT/LiminalNet). When redistributing it, retain the license and notices, and identify your changes as required by the license.
+
+Suggested credit: “Based on LiminalNet by RZU Informatique.”
+
 Third-party components retain their own licenses. DB-IP Lite country/ASN data are CC BY 4.0; service mappings come from IANA. Attribution and dependency notices are in [LICENSES/](LICENSES/).
