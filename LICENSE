@@ -1,0 +1,45 @@
+LiminalNet Community License — Development Draft 0.1
+Copyright 2026 RZU Informatique
+
+This draft records the intended distribution terms. Review it before a public
+release. It is a source-available license, not an OSI-approved open-source license.
+
+1. Permission
+You may use LiminalNet without charge for personal, educational and internal
+business purposes. You may inspect, copy, modify and redistribute the original
+code and derivative versions without charge, subject to the conditions below.
+
+2. Attribution
+Retain this license, copyright notices and third-party notices in source and
+binary distributions. Derivative versions must clearly state that they are
+based on LiminalNet by RZU Informatique and identify that changes were made.
+Do not imply endorsement by RZU Informatique or OpenAI.
+
+3. Free distribution
+You may not sell LiminalNet or derivative versions, require payment or a paid
+subscription to access them, or incorporate a substantial portion of this code
+into software distributed only for payment without separate written permission
+from RZU Informatique. Internal use by a business is permitted. Independent paid
+consulting or support is permitted if access to the software does not require
+buying that service. Voluntary donations are permitted and must not unlock
+exclusive software features or access.
+
+4. Derivative versions
+When redistributing modified versions, provide their corresponding source under
+these same terms. Preserve recipients' rights to use, modify and share freely.
+
+5. Third-party components
+These terms apply only to code and original assets for which RZU Informatique
+can grant these permissions. Third-party libraries, databases and other works
+retain their own licenses and rights. See LICENSES/ and dependency metadata.
+These terms do not revoke rights granted separately by third-party authors.
+
+6. Warranty and liability
+To the extent permitted by applicable law, the software is provided "AS IS",
+without warranty of any kind. The authors are not liable for claims or damages
+arising from its use. Mandatory statutory rights are not excluded.
+
+7. Termination
+Permissions under this license are conditional on compliance. If a violation is
+corrected within 30 days of written notice, permissions are reinstated unless
+the violation is repeated. No trademark rights are granted.

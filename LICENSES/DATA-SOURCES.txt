@@ -1,0 +1,15 @@
+IP country and ASN data: DB-IP Lite, November 2026.
+IP Geolocation by DB-IP (https://db-ip.com).
+Source pages:
+https://db-ip.com/db/download/ip-to-country-lite
+https://db-ip.com/db/download/ip-to-asn-lite
+License: Creative Commons Attribution 4.0 International.
+https://creativecommons.org/licenses/by/4.0/legalcode
+The data are supplied without accuracy guarantees. Their license is independent
+of the LiminalNet source-code license. Files have been decompressed, not modified.
+
+Service names and transport ports: IANA Service Name and Transport Protocol
+Port Number Registry, retrieved November 12, 2026.
+https://www.iana.org/assignments/service-names-port-numbers/
+The source CSV is transformed into a TCP/UDP port-name table. Port assignments
+are conventions and do not prove the actual application-layer protocol.

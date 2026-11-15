@@ -1,0 +1,16 @@
+/target/
+/dist/
+*.pcap
+*.pcapng
+*.log
+/.env
+/.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+/docs/liminalnet-intro-*.txt
+__pycache__/
+.DS_Store
+Thumbs.db
