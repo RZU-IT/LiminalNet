@@ -1,4 +1,4 @@
-"""Validate capture imports and failure cases against independently built files."""
+"""Capture imports and errors; independent fixtures."""
 import json
 import os
 import pathlib

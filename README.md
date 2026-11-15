@@ -2,7 +2,7 @@
 
 Interactive terminal network monitor for Windows and Linux. Developed by RZU Informatique with OpenAI Codex assistance. Highly inspired by Sniffnet, created by Giuliano Bellini and contributors.
 
-**Development build.** Consult `docs/validation.md` before relying on a feature. This project is not a Sniffnet release, a full Wireshark replacement, or an audited security product.
+**Development build.** Platform limits and test results: [validation report](docs/validation.md).
 
 ![LiminalNet door symbol](assets/liminalnet-symbol.svg)
 

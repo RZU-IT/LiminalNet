@@ -1,4 +1,4 @@
-"""Verify Linux program blocking in an isolated network and dedicated cgroup."""
+"""Program blocking; isolated network, dedicated cgroup."""
 import http.server
 import json
 import os

@@ -50,10 +50,10 @@ struct Args {
     filter: String,
     #[arg(long)]
     record: Option<PathBuf>,
-    /// Run a bounded capture and print a JSON summary without opening the TUI.
+    /// Bounded capture; JSON output, no TUI.
     #[arg(long)]
     capture_seconds: Option<u64>,
-    /// Render a screen to plain text for layout verification.
+    /// Plain-text screen snapshot.
     #[arg(long)]
     render: Option<String>,
     #[arg(long, default_value_t = 120)]

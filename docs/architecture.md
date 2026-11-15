@@ -1,6 +1,6 @@
 # LiminalNet architecture
 
-Status: implementation in progress. No release has been validated yet.
+Development build. Test results and platform limits: [validation report](validation.md).
 
 The application owns the terminal event loop. Capture runs on a worker thread and publishes bounded batches to the application. Packet parsing and accounting do not depend on terminal widgets. DNS, geographical databases, process attribution and firewall operations must not block rendering.
 

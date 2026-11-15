@@ -1,4 +1,4 @@
-"""Render the application's actual terminal cells for visual review."""
+"""Terminal-cell preview."""
 import json
 import pathlib
 import sys

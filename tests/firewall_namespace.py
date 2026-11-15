@@ -1,4 +1,4 @@
-"""Run ONLY in a fresh network namespace; never change the host firewall."""
+"""Isolated network namespace only; never the host firewall."""
 import json
 import os
 import pathlib

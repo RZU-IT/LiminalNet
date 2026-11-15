@@ -1,4 +1,4 @@
-"""Exercise the real terminal lifecycle in an isolated user configuration."""
+"""Terminal lifecycle with isolated settings."""
 import fcntl
 import os
 import pathlib

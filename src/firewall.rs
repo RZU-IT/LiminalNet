@@ -130,7 +130,7 @@ fn install_platform(id: &str, target: &Target) -> Result<String> {
             )
         }
     };
-    // Validate the entire transaction before changing any rule.
+    // Check the full transaction before applying.
     let validate = |check: bool| -> Result<()> {
         let mut command = Command::new("nft");
         if check {

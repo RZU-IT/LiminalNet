@@ -1,4 +1,4 @@
-"""Trigger live threshold, favorite and CIDR alerts against loopback only."""
+"""Loopback alerts: thresholds, favorites, CIDR."""
 import fcntl
 import os
 import pathlib

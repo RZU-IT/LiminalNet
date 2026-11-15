@@ -1,4 +1,4 @@
-"""Collect dependency license texts from Cargo's resolved local sources."""
+"""Dependency licenses from Cargo's local sources."""
 import json
 import pathlib
 import subprocess

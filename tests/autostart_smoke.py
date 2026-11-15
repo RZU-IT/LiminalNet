@@ -1,4 +1,4 @@
-"""Exercise startup registration without touching the user's real startup folder."""
+"""Autostart registration in isolated folders."""
 import os
 import pathlib
 import subprocess
