@@ -1,6 +1,6 @@
 # Validation — 0.1.0-beta.1
 
-Recorded on 2026-11-12. These results describe this build, not a guarantee of defect-free operation.
+Updated on 2026-11-16. These results describe this build, not a guarantee of defect-free operation.
 
 ## Beta 1 — 2026-11-15
 
@@ -8,12 +8,24 @@ Recorded on 2026-11-12. These results describe this build, not a guarantee of de
 - Fresh Windows ZIP extraction and isolated installation passed. An extracted Ubuntu Debian package also passed a real loopback capture under WSL2. Each captured 40 synthetic local packets; PCAP recording and replay matched packet and byte totals.
 - PCAP/PCAPNG fixtures and failure regression checks passed against the extracted Windows and Linux packages. The Linux archive installer was exercised with isolated user-data and executable directories.
 - Windows version metadata reports `0.1.0-beta.1` and the prerelease flag. Package dependencies were inspected. Release binaries were rebuilt with source-path remapping; no private home-directory paths, GitHub token patterns or private-key headers were found by the targeted binary scan.
-- OS firewall/native Linux validation limits below remain unchanged. Test captures and isolated settings are not included in release assets.
+- Native Windows elevated firewall checks were completed on 2026-11-16. Linux limits are listed below. Test captures and isolated settings are not included in release assets.
+
+## Ubuntu desktop VM — 2026-11-16
+
+The published Ubuntu AMD64 Debian package was installed with dpkg in a complete Ubuntu 24.04.5 VM, kernel 6.8.0-147-generic, with LightDM and XFCE. This VM runs its own kernel; these results do not come from WSL's kernel.
+
+- Real loopback capture recorded 40 packets; recording and replay totals matched. Capture/import regressions, live alerts, terminal lifecycle and isolated autostart registration passed.
+- In guarded network namespaces, IP blocking stopped real ping traffic and application blocking stopped a real HTTP client in its dedicated cgroup. Removing the rules restored traffic. Temporary rules and cgroups were absent at cleanup.
+- All 34 terminal feature checkpoints passed, including settings, themes, custom colors, database/blacklist loading, filters, details, favorites, notification/webhook delivery and the Git launcher URL. The Git URL uses a test spy in this suite.
+- An actual XFCE login launched the packaged application as the test user and began capture with guest-only capture capabilities. Disabling autostart and opening a new XFCE session left the application stopped. A real screenshot of that desktop session was saved locally.
+
+The guest uses a virtual display and virtual network. This validates that Ubuntu/XFCE setup, not physical Raspberry Pi hardware, every distribution, every terminal or a physical GPU. No host firewall or login configuration was changed.
 
 ## Environments
 
 - Native Windows x86-64 with the existing Npcap runtime. Executables were cross-compiled in WSL and executed on Windows, including real packet capture and an interactive terminal session.
 - Ubuntu 24.04.4 under WSL2, kernel 6.18.33.2-microsoft-standard-WSL2. Linux artifacts target Ubuntu 24.04 x86-64; compatibility with other distributions has not been established.
+- Ubuntu 24.04.5 x86-64 in QEMU/KVM, kernel 6.8.0-147-generic, LightDM/XFCE with a virtual display.
 - Rust 1.100.0, locked Cargo dependencies. Linux build cache resides on the WSL filesystem.
 
 ## Passed checks
@@ -25,16 +37,16 @@ Recorded on 2026-11-12. These results describe this build, not a guarantee of de
 - Native Windows interactive terminal: welcome, adapter selection, capture, pause, inspection, stop confirmation, return to sources and clean exit.
 - WSL pseudo-terminal lifecycle and terminal restoration; imported connection details and an explicit local ping latency probe.
 - WSL live alerts: bits/s, bytes/s and packets/s thresholds, favorites and CIDR blacklist matches.
-- Autostart registration and removal on Windows and Linux using isolated configuration/startup directories. No user login startup was enabled during these tests.
+- Autostart registration and removal on Windows and Linux using isolated configuration/startup directories. The isolated registration tests did not change the host login startup; a separate real login test passed in the Ubuntu VM.
 - Linux IP blocking and removal in an isolated network namespace: baseline ping succeeds, blocked ping fails, restored ping succeeds. No host firewall policy was changed.
 - Visual review of rendered terminal cells and native terminal output, including graph background, time labels, panel alignment and ASCII branding.
 - Windows executable icon and version metadata; Linux archive permissions and Debian package construction.
 
 ## Boundaries and remaining validation
 
-- Windows IP/application firewall integration requires administrator rights. This session was not elevated; actual Windows policy changes remain untested. Input rejection and rule construction checks do not substitute for this integration test.
-- This WSL kernel has CONFIG_NFT_SOCKET disabled. Linux application blocking is explicitly unavailable here and was not marked passed. Validate it on native Linux with nftables socket/cgroup v2 support and a dedicated application cgroup. Shared cgroups are rejected. Linux firewall rules are runtime rules, not reboot-persistent policy.
-- A full native Linux desktop/login session, distribution compatibility and prolonged high-throughput capture remain external validation tasks. WSL does not establish these results.
+- Native Windows elevated integration passed on 2026-11-16: a persistent test application reached a separate HTTP peer, CLI and TUI application rules stopped its traffic, the control executable remained allowed, and removing each rule restored traffic. IP blocking and restoration also passed. Temporary rules were removed and cleanup was verified. Administrator rights remain required.
+- This WSL kernel has CONFIG_NFT_SOCKET disabled. Linux application blocking is explicitly unavailable here and was not marked passed. The same package passed application blocking in the Ubuntu VM with nftables socket/cgroup v2 support and a dedicated application cgroup. Shared cgroups are rejected. Linux firewall rules are runtime rules, not reboot-persistent policy.
+- The Ubuntu/XFCE desktop/login checks passed in the full VM. Other distributions, physical hardware and prolonged high-throughput capture remain outside the completed acceptance scope. WSL alone does not establish these results.
 - UI localization covers French and English catalogs; some technical diagnostics remain English. Additional languages are not shipped.
 - Notifications are in-application history, optional terminal bell and optional webhook. Native desktop notification delivery is not implemented.
 - Terminal graph resolution depends on available cells; the history window is 30 seconds. Service names are port-based inference, and socket-to-process correlation can legitimately be unknown or ambiguous.

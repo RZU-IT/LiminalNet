@@ -4,7 +4,7 @@ Implementation status for 0.1.0. Evidence and limits are recorded in validation.
 
 | Requirement | Status |
 | --- | --- |
-| Windows and Linux terminal application | Implemented; native Windows and WSL exercised. Native Linux acceptance remains. |
+| Windows and Linux terminal application | Implemented; native Windows and WSL exercised. Ubuntu/XFCE VM acceptance passed. |
 | Midnight/yellow/cyan layout, keyboard, mouse, compact display | Implemented; terminal snapshots and interactive review. Mouse coverage is partial. |
 | First-launch Threshold welcome, replay setting, loading state, ASCII door | Implemented. |
 | Adapters, activity previews, IP addresses, BPF, optional recording | Implemented; capture and recording exercised on both platforms. |
@@ -17,10 +17,10 @@ Implementation status for 0.1.0. Evidence and limits are recorded in validation.
 | PCAP/PCAPNG import and PCAP export | Implemented; fixtures, failures and round trip tested. |
 | Threshold/favorite/blacklist alerts | Implemented and exercised. History, optional bell/webhook; no native desktop toasts. |
 | IP/CIDR blacklist import | Implemented; surveillance does not imply firewall blocking. |
-| IP/program blocking and reversal | Implemented with confirmations. Linux IP integration passed. Windows elevated and native Linux program integration remain unvalidated. |
+| IP/program blocking and reversal | Implemented with confirmations. Linux IP integration passed. Native Windows elevated IP/application blocking and reversal passed. Ubuntu VM IP/application blocking and reversal passed. |
 | Themes, custom colors and gradients | Implemented; visual review, not exhaustive acceptance. |
 | French and English | Implemented catalogs; some technical diagnostics remain English. Other languages deferred. |
-| Login autostart and automatic capture preference | Implemented; isolated registration/removal tested. Real login cycle remains. |
+| Login autostart and automatic capture preference | Implemented; isolated registration/removal tested. Enable/disable across real XFCE login sessions passed in the Ubuntu VM. |
 | Git link and credits | Implemented; donation controls removed. |
 | Free use, attribution, resale restrictions | Community license draft supplied; legal review remains. |
 | Modular English source, packaging, documentation and errors | Implemented; locked builds, local diagnostics and regression scripts included. |

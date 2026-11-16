@@ -31,8 +31,8 @@ The toolchain is pinned in [rust-toolchain.toml](rust-toolchain.toml). No Rust i
 
 | Platform | Capture dependency | Validation |
 | --- | --- | --- |
-| Windows x86-64 | Npcap, installed separately | Native capture and installation tested. Elevated firewall checks remain. |
-| Ubuntu 24.04 x86-64 | libpcap | Capture tested under WSL2. Native Linux acceptance remains. |
+| Windows x86-64 | Npcap, installed separately | Native capture, installation and elevated IP/application blocking tested. |
+| Ubuntu 24.04 x86-64 | libpcap | Capture, IP/application blocking and XFCE login autostart tested in an Ubuntu VM. WSL capture also tested. |
 
 Windows builds also need a C linker and the Npcap SDK. The [cross-build script](packaging/build-windows-from-wsl.sh) documents the GNU target setup. Windows binaries are unsigned; Npcap is not bundled.
 
