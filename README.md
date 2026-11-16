@@ -4,7 +4,7 @@
 
 Network traffic monitor for the terminal. Windows and Linux, built with Rust and Ratatui.
 
-**Experimental.** Platform support and completed checks are documented in the [validation report](docs/validation.md).
+**Beta 1 — experimental.** Tested on one Windows 11 PC, in WSL2 and in an Ubuntu 24.04 QEMU VM. Testing on other physical PCs is still pending. See the [validation report](docs/validation.md) for completed checks and limits.
 
 [Download Beta 1](https://github.com/RZU-IT/LiminalNet/releases/tag/v0.1.0-beta.1). Windows x86-64 and Ubuntu 24.04 x86-64 packages are available in the release assets.
 
