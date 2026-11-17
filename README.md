@@ -26,7 +26,7 @@ cargo build --release --locked
 
 Développé par RZU Informatique.
 
-Conçu, testé et débogué par RZU Informatique avec l’assistance d’OpenAI Codex.
+Made with care by RZU Informatique, with help from OpenAI Codex. **(not vibe coded)**
 
 Highly inspired by [Sniffnet](https://github.com/GyulyVGC/sniffnet), created by Giuliano Bellini and contributors.
 
